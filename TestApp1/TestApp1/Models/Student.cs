@@ -16,7 +16,7 @@ namespace TestApp1.Models
 
         [Required]
         [EmailAddress]
-        //[Remote("IsOrgEmailValid", "Students", ErrorMessage = "This email is not valid. Please enter a valid organization email.")]
+        [Remote("IsOrgEmailValid", "Students", ErrorMessage = "This email is not valid. Please enter a valid organization email.")]
         [RegularExpression("^[a-zA-Z0-9_\\.-]+@([a-zA-Z0-9-]+\\.)+[a-zA-Z]{2,6}$", ErrorMessage = "E-mail is not valid")]
         public string OrganizationEmail { get; set; }
 

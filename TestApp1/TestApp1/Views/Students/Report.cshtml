@@ -1,0 +1,59 @@
+﻿@model IEnumerable<TestApp1.Models.StudentReport>
+
+@{
+    ViewData["Title"] = "Report";
+}
+
+<h3>Report</h3>
+<hr />
+
+@*@foreach (var division in Model)
+{
+    <div class="row" style="border: 1px solid black;">
+        <div class="col-md-3">
+            @division.Name
+        </div>
+        <div class="col-md-9">
+            @foreach(var district in division.Districts)
+            {
+                <div class="row" style="border: 1px solid black;">
+                    <div class="col-md-3">
+                        @district.Name
+                    </div>
+                    <div class="col-md-9">
+                        @foreach(var school in district.Schools)
+                        {
+                            <div class="row" style="border: 1px solid black;">
+                                <div class="col-md-3">
+                                    @school.Name
+                                </div>
+                                
+                            </div>
+                        }
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+}*@
+
+<table class="table table-bordered">
+    <tr class="bg-primary">
+        <th>Division</th>
+        <th>District</th>
+        <th>School</th>
+        <th>Department (No of Students)</th>
+    </tr>
+    @foreach(var item in Model)
+    {
+        <tr>
+            <td>@item.Division</td>
+            <td>@item.District</td>
+            <td>@item.School</td>
+            <td>@item.Student</td>
+        </tr>
+    }
+</table>
+
+
+

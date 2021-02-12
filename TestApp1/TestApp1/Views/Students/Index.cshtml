@@ -1,0 +1,37 @@
+﻿@model IEnumerable<TestApp1.Models.Student>
+
+@{
+    ViewData["Title"] = "Index";
+    var serial = 1;
+}
+
+<h3>Student List</h3>
+<hr />
+
+<table class="table table-bordered table-hover">
+    <thead>
+        <tr class="bg-primary">
+            <th>#.</th>
+            <th>Name</th>
+            <th>Department</th>
+            <th>School</th>
+            <th>District</th>
+            <th>Division</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach(var item in Model)
+        {
+            <tr>
+                <td>@serial.</td>
+                <td>@item.Name</td>
+                <td>@item.Department</td>
+                <td>@item.School.Name</td>
+                <td>@item.District.Name</td>
+                <td>@item.Division.Name</td>
+            </tr>
+            serial++;
+        }
+    </tbody>
+</table>
+
