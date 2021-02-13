@@ -11,6 +11,6 @@ namespace TestApp1.Models
         public string District { get; set; }
         public string School { get; set; }
         public string Department { get; set; }
-        public string Student { get; set; }
+        public int NoofStudents { get; set; }
     }
 }

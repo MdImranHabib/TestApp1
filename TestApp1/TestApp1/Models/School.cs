@@ -16,6 +16,6 @@ namespace TestApp1.Models
         public int DistrictId { get; set; }
 
         public virtual District District { get; set; }
-        public virtual List<Student> Students { get; set; }
+        public virtual List<Department> Departments { get; set; }
     }
 }

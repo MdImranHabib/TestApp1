@@ -21,7 +21,7 @@ namespace TestApp1.Models
         public string OrganizationEmail { get; set; }
 
         [Required]
-        public string Department { get; set; }
+        public int DepartmentId { get; set; }
 
         [Required]
         public int SchoolId { get; set; }
@@ -32,6 +32,7 @@ namespace TestApp1.Models
         [Required]
         public int DivisionId { get; set; }
 
+        public virtual Department Department { get; set; }
         public virtual School School { get; set; }
         public virtual District District { get; set; }
         public virtual Division Division { get; set; }

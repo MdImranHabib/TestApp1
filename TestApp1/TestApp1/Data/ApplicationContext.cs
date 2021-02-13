@@ -16,6 +16,7 @@ namespace TestApp1.Data
         public DbSet<Division> Divisions { get; set; }
         public DbSet<District> Districts { get; set; }
         public DbSet<School> Schools { get; set; }
+        public DbSet<Department> Departments { get; set; }
         public DbSet<Student> Students { get; set; }
     }
 }

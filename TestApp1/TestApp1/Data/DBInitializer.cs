@@ -15,11 +15,12 @@ namespace TestApp1.Data
             await InitializeDivision(context);
             await InitializeDistrict(context);
             await InitializeSchool(context);
-        }      
-
+            await InitializeDepartment(context);
+        }
+       
         private static async Task InitializeDivision(ApplicationContext context)
         {
-            var division = new Division() {Name = "Dhaka"};        
+            var division = new Division() {Name = "DHAKA"};        
 
             context.Add(division);
             await context.SaveChangesAsync();
@@ -27,12 +28,10 @@ namespace TestApp1.Data
 
         private static async Task InitializeDistrict(ApplicationContext context)
         {
-            var dist1 = new District() { Name = "Dhaka", DivisionId = 1 };
-            context.Add(dist1);
-
+            var dist1 = new District() { Name = "Dhaka", DivisionId = 1 };         
             var dist2 = new District() { Name = "Gazipur", DivisionId = 1 };
-            context.Add(dist2);
 
+            context.AddRange(dist1, dist2);
             await context.SaveChangesAsync();
         }
 
@@ -43,13 +42,30 @@ namespace TestApp1.Data
             var s3 = new School() { Name = "School C", Email = "schoolc@gmail.com", DistrictId = 2 };
             var s4 = new School() { Name = "School D", Email = "schoold@gmail.com", DistrictId = 2 };
 
-            context.Add(s1);
-            context.Add(s2);
-            context.Add(s3);
-            context.Add(s4);
-
+            context.AddRange(s1, s2, s3, s4);         
             await context.SaveChangesAsync();
         }
 
+        private static async Task InitializeDepartment(ApplicationContext context)
+        {
+            var d1 = new Department() { Name = "Science", SchoolId = 1 };
+            var d2 = new Department() { Name = "Business", SchoolId = 1 };
+            var d3 = new Department() { Name = "Arts", SchoolId = 1 };
+            
+            var d4 = new Department() { Name = "Science", SchoolId = 2 };
+            var d5 = new Department() { Name = "Business", SchoolId = 2 };
+            var d6 = new Department() { Name = "Arts", SchoolId = 2 };
+
+            var d7 = new Department() { Name = "Science", SchoolId = 3 };
+            var d8 = new Department() { Name = "Business", SchoolId = 3 };
+            var d9 = new Department() { Name = "Arts", SchoolId = 3 };
+
+            var d10 = new Department() { Name = "Science", SchoolId = 4 };
+            var d11 = new Department() { Name = "Business", SchoolId = 4 };
+            var d12 = new Department() { Name = "Arts", SchoolId = 4 };
+
+            context.AddRange(d1, d2, d3, d4, d5, d6, d7, d8, d9, d10, d11, d12);
+            await context.SaveChangesAsync();
+        }
     }
 }

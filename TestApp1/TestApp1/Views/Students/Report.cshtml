@@ -7,53 +7,131 @@
 <h3>Report</h3>
 <hr />
 
-@*@foreach (var division in Model)
-{
-    <div class="row" style="border: 1px solid black;">
-        <div class="col-md-3">
-            @division.Name
-        </div>
-        <div class="col-md-9">
-            @foreach(var district in division.Districts)
-            {
-                <div class="row" style="border: 1px solid black;">
-                    <div class="col-md-3">
-                        @district.Name
-                    </div>
-                    <div class="col-md-9">
-                        @foreach(var school in district.Schools)
-                        {
-                            <div class="row" style="border: 1px solid black;">
-                                <div class="col-md-3">
-                                    @school.Name
-                                </div>
-                                
-                            </div>
-                        }
-                    </div>
+<div class="row">
+    <div class="col-md-12">
+        @foreach (var div in ViewBag.Divisions)
+        {
+            <div class="row" style="border: 1px solid black;">
+                <div class="col-md-3">
+                    @div.Name
                 </div>
-            }
-        </div>
-    </div>
-}*@
+                <div class="col-md-9">
+                    @foreach(var dist in div.Districts)
+                    {
+                        <div class="row" style="border: 1px solid black;">
+                            <div class="col-md-3">
+                                @dist.Name
+                            </div>
+                            <div class="col-md-9">
+                                @foreach (var sch in ViewBag.Schools)
+                                {
+                                    if (sch.DistrictId == dist.Id)
+                                    {
+                                        <div class="row" style="border: 1px solid black;">
+                                            <div class="col-md-3">
+                                                @sch.Name
+                                            </div>
+                                            <div class="col-md-9">
+                                                @foreach (var dept in ViewBag.Departments)
+                                                {
+                                                    if (dept.SchoolId == sch.Id)
+                                                    {
+                                                        <div class="row" style="border: 1px solid black;">
+                                                            <div class="col-md-12">
+                                                                @dept.Name
 
-<table class="table table-bordered">
-    <tr class="bg-primary">
-        <th>Division</th>
-        <th>District</th>
-        <th>School</th>
-        <th>Department (No of Students)</th>
-    </tr>
-    @foreach(var item in Model)
+                                                                @{
+                                                                    var i = 0;
+
+                                                                    foreach (var stu in ViewBag.Students)
+                                                                    {
+                                                                        if (stu.DepartmentId == dept.Id)
+                                                                        {
+                                                                            i = i + 1;
+                                                                        }
+                                                                    }
+                                                                }
+
+                                                                [<b>@i</b> students]
+                                                            </div>
+                                                        </div>
+                                                    }
+                                                }
+                                            </div>
+                                        </div>
+                                    }
+                                }
+                            </div>
+                        </div>
+                    }
+                </div>
+            </div>
+        }
+    </div>
+</div>
+
+@*@foreach (var division in ViewBag.Divisions)
     {
-        <tr>
-            <td>@item.Division</td>
-            <td>@item.District</td>
-            <td>@item.School</td>
-            <td>@item.Student</td>
+        <div class="row" style="border: 1px solid black;">
+            <div class="col-md-3">
+                @division.Name
+            </div>
+            <div class="col-md-9">
+                @foreach(var district in division.Districts)
+                {
+                    <div class="row" style="border: 1px solid black;">
+                        <div class="col-md-3">
+                            @district.Name
+                        </div>
+                        <div class="col-md-9">
+                            @foreach (var school in ViewBag.Schools)
+                            {
+                                if (school.DistrictId == district.Id)
+                                {
+                                    <div class="row" style="border: 1px solid black;">
+                                        <div class="col-md-3">
+                                            @school.Name
+                                        </div>
+                                        <div class="col-md-9">
+                                            @foreach (var department in ViewBag.Department)
+                                            {
+                                                if (department.SchoolId == school.Id)
+                                                {
+                                                    <div class="row" style="border: 1px solid black;">
+                                                        @department.Name
+                                                    </div>
+                                                }
+                                            }
+                                        </div>
+                                    </div>
+                                }
+
+                            }
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+    }*@
+
+
+@*<table class="table table-bordered">
+        <tr class="bg-primary">
+            <th>Division</th>
+            <th>District</th>
+            <th>School</th>
+            <th>Department (No of Students)</th>
         </tr>
-    }
-</table>
+        @foreach(var item in Model)
+        {
+            <tr>
+                <td>@item.Division</td>
+                <td>@item.District</td>
+                <td>@item.School</td>
+                <td>@item.Department (@item.NoofStudents)</td>
+            </tr>
+        }
+    </table>*@
 
 
 
