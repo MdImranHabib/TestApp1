@@ -18,7 +18,7 @@
                 <div class="col-md-9">
                     @foreach(var dist in div.Districts)
                     {
-                        <div class="row" style="border: 1px solid black;">
+                        <div class="row" style="border-left: 1px solid black; border-top: 1px solid black;">
                             <div class="col-md-3">
                                 @dist.Name
                             </div>
@@ -27,7 +27,7 @@
                                 {
                                     if (sch.DistrictId == dist.Id)
                                     {
-                                        <div class="row" style="border: 1px solid black;">
+                                        <div class="row" style="border-left: 1px solid black; border-bottom: 1px solid black;">
                                             <div class="col-md-3">
                                                 @sch.Name
                                             </div>
@@ -36,7 +36,7 @@
                                                 {
                                                     if (dept.SchoolId == sch.Id)
                                                     {
-                                                        <div class="row" style="border: 1px solid black;">
+                                                        <div class="row" style="border-left: 1px solid black; border-top: 1px solid black;">
                                                             <div class="col-md-12">
                                                                 @dept.Name
 
