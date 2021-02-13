@@ -16,8 +16,9 @@ namespace TestApp1.Data
             await InitializeDistrict(context);
             await InitializeSchool(context);
             await InitializeDepartment(context);
-        }
-       
+            await StudentMaster(context);
+        }       
+
         private static async Task InitializeDivision(ApplicationContext context)
         {
             var division = new Division() {Name = "DHAKA"};        
@@ -65,6 +66,57 @@ namespace TestApp1.Data
             var d12 = new Department() { Name = "Arts", SchoolId = 4 };
 
             context.AddRange(d1, d2, d3, d4, d5, d6, d7, d8, d9, d10, d11, d12);
+            await context.SaveChangesAsync();
+        }
+
+        private static async Task StudentMaster(ApplicationContext context)
+        {
+            var s1 = new StudentMaster()
+            {
+                Division = "DHAKA",
+                District = "Dhaka",
+                School = "School A",
+                Department = "Arts",
+                Name = "Shohag"
+            };
+
+            var s2 = new StudentMaster()
+            {
+                Division = "DHAKA",
+                District = "Dhaka",
+                School = "School A",
+                Department = "Business",
+                Name = "Shahin"
+            };
+
+            var s3 = new StudentMaster()
+            {
+                Division = "DHAKA",
+                District = "Dhaka",
+                School = "School A",
+                Department = "Arts",
+                Name = "Shamim"
+            };
+
+            var s4 = new StudentMaster()
+            {
+                Division = "DHAKA",
+                District = "Gazipur",
+                School = "School B",
+                Department = "Arts",
+                Name = "Niloy"
+            };
+
+            var s5 = new StudentMaster()
+            {
+                Division = "DHAKA",
+                District = "Gazipur",
+                School = "School B",
+                Department = "Science",
+                Name = "Nayan"
+            };
+
+            context.AddRange(s1, s2, s3, s4, s5);
             await context.SaveChangesAsync();
         }
     }

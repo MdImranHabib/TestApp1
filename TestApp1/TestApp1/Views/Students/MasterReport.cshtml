@@ -1,0 +1,32 @@
+﻿@model IEnumerable<TestApp1.Models.StudentMaster>
+@{
+    ViewData["Title"] = "MasterReport";
+}
+
+<h3>MasterReport @ViewBag.Count</h3>
+
+<table class="table table-bordered table-hover">
+    <thead>
+        <tr class="bg-primary">   
+            <th>Division</th>
+            <th>District</th>
+            <th>School</th>
+            <th>Department</th>
+            <th>Name</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.Division</td>
+                <td>@item.District</td>
+                <td>@item.School</td>
+                <td>@item.Department</td>
+                <td>@item.Name</td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+

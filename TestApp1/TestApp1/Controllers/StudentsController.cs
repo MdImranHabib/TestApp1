@@ -139,8 +139,27 @@ namespace TestApp1.Controllers
 
             return View();
         }
+
+
     }
 }
+
+//public IActionResult MasterReport()
+//{
+//    var result = _context.StudentMasters
+//        .ToList();
+
+//    var resultCount = _context.StudentMasters
+//        .Distinct()
+//        .ToList()
+//        .Count;
+
+//    ViewBag.Count = resultCount;
+
+//    return View(result);
+//}
+
+
 
 //SqlConnection conn = new SqlConnection(connString);
 //var query = @"SELECT Divisions.Name as Division, Districts.Name as District, Schools.Name as School, Departments.Name as Department, COUNT(Students.Id) AS NumberOfStudent
@@ -150,13 +169,10 @@ namespace TestApp1.Controllers
 //                          LEFT JOIN Departments ON Schools.Id = Departments.SchoolId
 //                          LEFT JOIN Students ON Departments.Id = Students.DepartmentId
 //                          GROUP BY Divisions.Name, Districts.Name, Schools.Name, Departments.Name";
-
 //SqlCommand cmd = new SqlCommand(query, conn);
 //conn.Open();
 //            SqlDataReader sdr = cmd.ExecuteReader();
-
 //var reportList = new List<StudentReport>();
-
 //            while (sdr.Read())
 //            {
 //                var report = new StudentReport()
@@ -170,9 +186,10 @@ namespace TestApp1.Controllers
 //reportList.Add(report);
 //            }
 //            sdr.Close();
-//            conn.Close();
-            
+//            conn.Close();           
 //            return View(reportList);
+
+
 
 //var divisions = _context.Divisions
 //                .Include(d => d.Districts)
@@ -184,7 +201,6 @@ namespace TestApp1.Controllers
 //             join dept in _context.Departments on sch.Id equals dept.SchoolId
 //             join s in _context.Students on dept.Id equals s.DepartmentId
 //             select new StudentReport { Division = div.Name, District = dist.Name, School = sch.Name, Department = dept.Name, NoofStudents =  };
-
 //            return View(result);
 
 
@@ -198,14 +214,13 @@ namespace TestApp1.Controllers
 //    (from student2 in studentGroup
 //     select student2.ExamScores.Average()).Max()
 //};
-
 //     int count = queryGroupMax.Count();
+
 
 //var query = from person in people
 //            join pet in pets on person equals pet.Owner into gj
 //            from subpet in gj.DefaultIfEmpty()
 //            select new { person.FirstName, PetName = subpet?.Name ?? String.Empty };
-
 //    var result = languages.GroupJoin(persons, lang => lang.Id, pers => pers.LanguageId,
 //(lang, ps) => new { Key = lang.Name, Persons = ps });
 
