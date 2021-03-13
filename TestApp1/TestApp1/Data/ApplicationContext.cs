@@ -18,6 +18,5 @@ namespace TestApp1.Data
         public DbSet<School> Schools { get; set; }
         public DbSet<Department> Departments { get; set; }
         public DbSet<Student> Students { get; set; }
-        public DbSet<StudentMaster> StudentMasters { get; set; }
     }
 }

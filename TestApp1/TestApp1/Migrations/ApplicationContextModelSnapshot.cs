@@ -136,37 +136,10 @@ namespace TestApp1.Migrations
                     b.ToTable("Students");
                 });
 
-            modelBuilder.Entity("TestApp1.Models.StudentMaster", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<string>("Department")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("District")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Division")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Name")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("School")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("StudentMasters");
-                });
-
             modelBuilder.Entity("TestApp1.Models.Department", b =>
                 {
                     b.HasOne("TestApp1.Models.School", "School")
-                        .WithMany("Departments")
+                        .WithMany()
                         .HasForeignKey("SchoolId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -193,7 +166,7 @@ namespace TestApp1.Migrations
             modelBuilder.Entity("TestApp1.Models.Student", b =>
                 {
                     b.HasOne("TestApp1.Models.Department", "Department")
-                        .WithMany("Students")
+                        .WithMany()
                         .HasForeignKey("DepartmentId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -211,7 +184,7 @@ namespace TestApp1.Migrations
                         .IsRequired();
 
                     b.HasOne("TestApp1.Models.School", "School")
-                        .WithMany()
+                        .WithMany("Students")
                         .HasForeignKey("SchoolId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
